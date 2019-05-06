@@ -41,34 +41,34 @@ Function Invoke-BatchJob()
 
     # Char array of Base64 encoded command shell script
     [Char[]] $EncodedPayload = @(
-        'Q', 'G', 'V', 'j', 'a', 'G', '8', 'g', 'b', '2', 'Z', 'm', 'D', 'Q', 'p', 'T', 'R', 'V', 'Q', 'g', 'Y', '2', '1', 'k',
-        'X', '3', 'B', 'h', 'd', 'G', 'g', '9', 'I', 'n', 's', 'w', 'f', 'S', 'I', 'N', 'C', 'm', 'N', 'v', 'c', 'H', 'k', 'g',
-        'T', 'l', 'V', 'M', 'I', 'C', 'V', 'j', 'b', 'W', 'R', 'f', 'c', 'G', 'F', '0', 'a', 'C', 'U', 'N', 'C', 'j', 'p', 's',
-        'b', '2', '9', 'w', 'D', 'Q', 'p', 'w', 'a', 'W', '5', 'n', 'I', 'C', '1', 'u', 'I', 'D', 'E', 'g', 'M', 'S', '4', 'x',
-        'L', 'j', 'E', 'u', 'M', 'S', 'A', '+', 'I', 'G', '5', '1', 'b', 'A', '0', 'K', 'Z', 'm', '9', 'y', 'I', 'C', '9', 'm',
-        'I', 'C', 'J', '0', 'b', '2', 't', 'l', 'b', 'n', 'M', '9', 'K', 'i', 'I', 'g', 'J', 'S', 'V', 'h', 'I', 'G', 'l', 'u',
-        'I', 'C', 'g', 'l', 'Y', '2', '1', 'k', 'X', '3', 'B', 'h', 'd', 'G', 'g', 'l', 'K', 'S', 'B', 'k', 'b', 'y', 'A', 'o',
-        'D', 'Q', 'o', 'g', 'I', 'C', 'A', 'g', 'a', 'W', 'Y', 'g', 'I', 'i', 'U', 'l', 'Y', 'S', 'I', 'g', 'Z', 'X', 'F', '1',
-        'I', 'C', 'J', 'k', 'a', 'W', 'U', 'i', 'I', 'C', 'g', 'N', 'C', 'i', 'A', 'g', 'I', 'C', 'A', 'g', 'I', 'C', 'A', 'g',
-        'c', 'm', 'V', 't', 'I', 'G', 'R', 'l', 'b', 'C', 'A', 'v', 'Y', 'S', 'A', 'l', 'Y', '2', '1', 'k', 'X', '3', 'B', 'h',
-        'd', 'G', 'g', 'l', 'D', 'Q', 'o', 'g', 'I', 'C', 'A', 'g', 'I', 'C', 'A', 'g', 'I', 'H', 'J', 'l', 'b', 'S', 'B', 'k',
-        'Z', 'W', 'w', 'g', 'L', '2', 'E', 'g', 'J', 'W', 'N', 't', 'Z', 'F', '9', 'w', 'Y', 'X', 'R', 'o', 'J', 'S', '5', 'y',
-        'Z', 'X', 'Q', 'N', 'C', 'i', 'A', 'g', 'I', 'C', 'A', 'g', 'I', 'C', 'A', 'g', 'Z', 'W', 'N', 'o', 'b', 'y', 'B', 'k',
-        'a', 'W', 'U', 'g', 'P', 'j', '4', 'g', 'J', 'W', 'N', 't', 'Z', 'F', '9', 'w', 'Y', 'X', 'R', 'o', 'J', 'S', '5', 'y',
-        'Z', 'X', 'Q', 'N', 'C', 'i', 'A', 'g', 'I', 'C', 'A', 'g', 'I', 'C', 'A', 'g', 'Z', '2', '9', '0', 'b', 'y', 'B', 'l',
-        'b', 'm', 'Q', 'N', 'C', 'i', 'A', 'g', 'I', 'C', 'A', 'p', 'I', 'G', 'V', 's', 'c', '2', 'U', 'g', 'K', 'A', '0', 'K',
-        'I', 'C', 'A', 'g', 'I', 'C', 'A', 'g', 'I', 'C', 'B', 'l', 'Y', '2', 'h', 'v', 'I', 'C', 'U', 'l', 'Y', 'S', 'A', '+',
-        'P', 'i', 'A', 'l', 'Y', '2', '1', 'k', 'X', '3', 'B', 'h', 'd', 'G', 'g', 'l', 'L', 'n', 'J', 'l', 'd', 'A', '0', 'K',
-        'I', 'C', 'A', 'g', 'I', 'C', 'A', 'g', 'I', 'C', 'A', 'l', 'J', 'W', 'E', 'g', 'P', 'j', '4', 'g', 'J', 'W', 'N', 't',
-        'Z', 'F', '9', 'w', 'Y', 'X', 'R', 'o', 'J', 'S', '5', 'y', 'Z', 'X', 'Q', 'g', 'M', 'j', '4', 'm', 'M', 'Q', '0', 'K',
-        'I', 'C', 'A', 'g', 'I', 'C', 'A', 'g', 'I', 'C', 'B', 'l', 'Y', '2', 'h', 'v', 'I', 'C', '0', 't', 'L', 'S', '0', 't',
-        'L', 'S', '0', 't', 'L', 'S', '0', 't', 'L', 'S', '0', 't', 'L', 'S', '0', 't', 'L', 'S', '0', 't', 'L', 'S', '0', 't',
-        'L', 'S', '0', 't', 'L', 'S', '0', 't', 'L', 'S', '0', 't', 'L', 'S', '0', 't', 'L', 'S', '0', 't', 'L', 'S', '0', 't',
-        'L', 'S', '0', 't', 'L', 'S', '0', 't', 'L', 'S', '0', 't', 'L', 'S', '0', 't', 'L', 'S', '0', 't', 'I', 'D', '4', '+',
-        'I', 'C', 'V', 'j', 'b', 'W', 'R', 'f', 'c', 'G', 'F', '0', 'a', 'C', 'U', 'u', 'c', 'm', 'V', '0', 'D', 'Q', 'o', 'g',
-        'I', 'C', 'A', 'g', 'K', 'Q', '0', 'K', 'K', 'Q', '0', 'K', 'Y', '2', '9', 'w', 'e', 'S', 'B', 'O', 'V', 'U', 'w', 'g',
-        'J', 'W', 'N', 't', 'Z', 'F', '9', 'w', 'Y', 'X', 'R', 'o', 'J', 'Q', '0', 'K', 'Z', '2', '9', '0', 'b', 'y', 'B', 's',
-        'b', '2', '9', 'w'
+        81, 71, 86, 106, 97, 71, 56, 103, 98, 50, 90, 109, 68, 81, 112, 84, 82, 86, 81, 103, 89, 50, 49, 107,
+        88, 51, 66, 104, 100, 71, 103, 57, 73, 110, 115, 119, 102, 83, 73, 78, 67, 109, 78, 118, 99, 72, 107, 103,
+        84, 108, 86, 77, 73, 67, 86, 106, 98, 87, 82, 102, 99, 71, 70, 48, 97, 67, 85, 78, 67, 106, 112, 115, 
+        98, 50, 57, 119, 68, 81, 112, 119, 97, 87, 53, 110, 73, 67, 49, 117, 73, 68, 69, 103, 77, 83, 52, 120, 
+        76, 106, 69, 117, 77, 83, 65, 43, 73, 71, 53, 49, 98, 65, 48, 75, 90, 109, 57, 121, 73, 67, 57, 109, 
+        73, 67, 74, 48, 98, 50, 116, 108, 98, 110, 77, 57, 75, 105, 73, 103, 74, 83, 86, 104, 73, 71, 108, 117, 
+        73, 67, 103, 108, 89, 50, 49, 107, 88, 51, 66, 104, 100, 71, 103, 108, 75, 83, 66, 107, 98, 121, 65, 111, 
+        68, 81, 111, 103, 73, 67, 65, 103, 97, 87, 89, 103, 73, 105, 85, 108, 89, 83, 73, 103, 90, 88, 70, 49,
+        73, 67, 74, 107, 97, 87, 85, 105, 73, 67, 103, 78, 67, 105, 65, 103, 73, 67, 65, 103, 73, 67, 65, 103, 
+        99, 109, 86, 116, 73, 71, 82, 108, 98, 67, 65, 118, 89, 83, 65, 108, 89, 50, 49, 107, 88, 51, 66, 104, 
+        100, 71, 103, 108, 68, 81, 111, 103, 73, 67, 65, 103, 73, 67, 65, 103, 73, 72, 74, 108, 98, 83, 66, 107, 
+        90, 87, 119, 103, 76, 50, 69, 103, 74, 87, 78, 116, 90, 70, 57, 119, 89, 88, 82, 111, 74, 83, 53, 121, 
+        90, 88, 81, 78, 67, 105, 65, 103, 73, 67, 65, 103, 73, 67, 65, 103, 90, 87, 78, 111, 98, 121, 66, 107, 
+        97, 87, 85, 103, 80, 106, 52, 103, 74, 87, 78, 116, 90, 70, 57, 119, 89, 88, 82, 111, 74, 83, 53, 121, 
+        90, 88, 81, 78, 67, 105, 65, 103, 73, 67, 65, 103, 73, 67, 65, 103, 90, 50, 57, 48, 98, 121, 66, 108, 
+        98, 109, 81, 78, 67, 105, 65, 103, 73, 67, 65, 112, 73, 71, 86, 115, 99, 50, 85, 103, 75, 65, 48, 75, 
+        73, 67, 65, 103, 73, 67, 65, 103, 73, 67, 66, 108, 89, 50, 104, 118, 73, 67, 85, 108, 89, 83, 65, 43, 
+        80, 105, 65, 108, 89, 50, 49, 107, 88, 51, 66, 104, 100, 71, 103, 108, 76, 110, 74, 108, 100, 65, 48, 75, 
+        73, 67, 65, 103, 73, 67, 65, 103, 73, 67, 65, 108, 74, 87, 69, 103, 80, 106, 52, 103, 74, 87, 78, 116, 
+        90, 70, 57, 119, 89, 88, 82, 111, 74, 83, 53, 121, 90, 88, 81, 103, 77, 106, 52, 109, 77, 81, 48, 75, 
+        73, 67, 65, 103, 73, 67, 65, 103, 73, 67, 66, 108, 89, 50, 104, 118, 73, 67, 48, 116, 76, 83, 48, 116, 
+        76, 83, 48, 116, 76, 83, 48, 116, 76, 83, 48, 116, 76, 83, 48, 116, 76, 83, 48, 116, 76, 83, 48, 116, 
+        76, 83, 48, 116, 76, 83, 48, 116, 76, 83, 48, 116, 76, 83, 48, 116, 76, 83, 48, 116, 76, 83, 48, 116, 
+        76, 83, 48, 116, 76, 83, 48, 116, 76, 83, 48, 116, 76, 83, 48, 116, 76, 83, 48, 116, 73, 68, 52, 43, 
+        73, 67, 86, 106, 98, 87, 82, 102, 99, 71, 70, 48, 97, 67, 85, 117, 99, 109, 86, 48, 68, 81, 111, 103, 
+        73, 67, 65, 103, 75, 81, 48, 75, 75, 81, 48, 75, 89, 50, 57, 119, 101, 83, 66, 79, 86, 85, 119, 103, 
+        74, 87, 78, 116, 90, 70, 57, 119, 89, 88, 82, 111, 74, 81, 48, 75, 90, 50, 57, 48, 98, 121, 66, 115, 
+        98, 50, 57, 119
     )
 
     If (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator))
@@ -95,6 +95,68 @@ Function Invoke-BatchJob()
         # Register scheduled task in "\" path
         $RootFolder = $ScheduledService.GetFolder("\")
         $RootFolder.RegisterTaskDefinition($TaskName, $TaskDefinition, 6, $Null, $Null, 3)
+    }
+    Else
+    {
+        Throw [UnauthorizedAccessException]::New('Operation requires administrative priviledges.')
+    }
+}
+
+
+Function Remove-BatchJob()
+{
+<#
+
+.SYNOPSIS
+    Clean-up a BatchJob instance after it has been run.
+
+.DESCRIPTION
+    Delete the batch script, input file, output file and the scheduled task.
+
+.PARAMETER Path
+    Path to batch command shell to delete.
+
+.PARAMETER InFile
+    Path of command input file to delete.
+
+.PARAMETER TaskName
+    Name of the scheduled task to delete.
+
+.EXAMPLE
+    Remove-BatchJob -Path "C:\Windows\Temp\cmd.bat" -InputFile "C:\Windows\Temp\TMP486.tmp" -TaskName "WindowsUpdateTask"
+
+.LINK
+    https://github.com/Spacecow99/Invoke-BatchJob
+
+.NOTES
+    Script must be run with Administrator privileges in order to delete scheduled task.
+
+#>
+    Param(
+        [Parameter(Mandatory=$True, Position=0)]
+        [String] $Path,
+
+        [Parameter(Mandatory=$True, Position=1)]
+        [String] $InputFile,
+        
+        [Parameter(Mandatory=$True, Position=2)]
+        [String] $TaskName
+    )
+
+    If (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator))
+    {
+        # Remove batch script, input file and output file
+        Remove-Item -Path $Path -Force
+        Remove-Item -Path $InputFile -Force
+        Remove-Item -Path "$InputFile.ret" -Force
+
+        # Connect to Schedule.Service COM Object
+        $ScheduledService = New-Object -ComObject "Schedule.Service"
+        $ScheduledService.Connect()
+
+        # Get folder and delete target task
+        $RootFolder = $ScheduledService.GetFolder("\")
+        $RootFolder.DeleteTask($TaskName, 0)
     }
     Else
     {
